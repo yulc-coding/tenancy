@@ -1,18 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/db/db",
+    "pages/room/room",
+    "pages/fee-house/fee-house",
+    "pages/my-house/my-house",
+    "pages/map/map",
+    "pages/room-info/room-info"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -20,6 +18,27 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/room/room",
+        "text": "找房"
+      },
+      {
+        "pagePath": "pages/my-house/my-house",
+        "text": "出租"
+      }
+    ],
+    "borderStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "downloadFile": 5000
   },
   "sitemapLocation": "sitemap.json"
 }

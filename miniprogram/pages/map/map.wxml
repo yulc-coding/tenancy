@@ -1,0 +1,12 @@
+<!--miniprogram/pages/map/map.wxml-->
+<text>miniprogram/pages/map/map.wxml</text>
+
+<view>
+  <map id="map" 
+    style="width: 100%; height: 300px;" 
+    longitude="{{longitude}}" 
+    latitude="{{latitude}}" 
+    markers="{{markers}}" 
+    show-location
+  ></map>
+</view>

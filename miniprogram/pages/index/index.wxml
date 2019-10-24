@@ -14,6 +14,13 @@
     </view>
   </view>
 
+    <!-- DB TEST -->
+   <view class="uploader">
+    <navigator url="../db/db" open-type="navigate" class="uploader-text">
+      <text>DB TEST</text>
+    </navigator>
+  </view>
+
 
   <!-- 上传图片 -->
   <view class="uploader">

@@ -1,0 +1,32 @@
+/* miniprogram/pages/room-info/room-info.wxss */
+
+.room-pic {
+  width: 700rpx;
+  height: 525rpx;
+}
+
+.describe {
+  width: 700rpx;
+}
+
+.info {
+  margin: 18rpx 0;
+}
+
+.info text {
+  margin: 20rpx 40rpx 20rpx 0;
+}
+
+.provide {
+  margin: 20rpx 40rpx 20rpx 0;
+  background-color: #f0f4f8;
+  color: #6682ae;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 4rpx;
+  border-radius: 16px;
+}
+
+.house-map {
+  width: 700rpx;
+  height: 400rpx;
+}

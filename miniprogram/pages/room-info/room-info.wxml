@@ -1,0 +1,33 @@
+<!--miniprogram/pages/room-info/room-info.wxml-->
+
+<view class="container">
+  <view>
+    <image src="{{room.pic[0]}}" class="room-pic"></image>
+  </view>
+  <view class="describe">
+    <view class="info">
+      <text class="price">{{room.fee+" 元/月"}}</text>
+      <text class="price">{{room.deposit}}</text>
+    </view>
+    <view class="info">
+      <text class="price">{{"水费: "+room.water+" 元/吨"}}</text>
+      <text class="price">{{"电费: "+room.electricity +" 元/度"}}</text>
+    </view>
+    <view class="info">
+      <text>{{room.square+"m² — "+room.community+" — "+room.houseNu+"号"}}</text>
+    </view>
+    <view class="info">
+      <text class="provide" wx:if="{{room.provide[0]}}">空调</text>
+      <text class="provide" wx:if="{{room.provide[1]}}">热水器</text>
+      <text class="provide" wx:if="{{room.provide[2]}}">冰箱</text>
+      <text class="provide" wx:if="{{room.provide[3]}}">洗衣机</text>
+    </view>
+    <view class="info">
+      <button></button>
+      <text>{{"联系人："+ owner.name+" ("+owner.phone+")"}}</text>
+    </view>
+  </view>
+  <view class="info">
+    <map class="house-map"></map>
+  </view>
+</view>

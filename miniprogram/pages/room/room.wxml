@@ -1,0 +1,12 @@
+<!--miniprogram/pages/room/room.wxml-->
+
+<view wx:for="{{roomList}}" style="margin-top:10px">
+  <navigator class="room" url="../room-info/room-info?roomId={{item._id}}">
+    <image src="{{item.pic[0]}}" class="room-image"></image>
+    <view class="describe">
+      <view>{{item.describe}}</view>
+      <view>{{item.square+"m²—"+item.community+"—"+item.houseNu+"号"}}</view>
+      <view class="fee">{{item.fee+"元/月"}}</view>
+    </view>
+  </navigator>
+</view>
