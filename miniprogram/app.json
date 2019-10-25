@@ -1,15 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
     "pages/db/db",
     "pages/room/room",
     "pages/fee-house/fee-house",
     "pages/my-house/my-house",
-    "pages/map/map",
     "pages/room-info/room-info"
   ],
   "window": {
@@ -23,15 +18,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/basics.png",
+        "selectedIconPath": "images/basics_cur.png"
       },
       {
-        "pagePath": "pages/room/room",
-        "text": "找房"
-      },
-      {
-        "pagePath": "pages/my-house/my-house",
-        "text": "出租"
+        "pagePath": "pages/fee-house/fee-house",
+        "text": "出租",
+        "iconPath": "images/about.png",
+        "selectedIconPath": "images/about_cur.png"
       }
     ],
     "borderStyle": "black"

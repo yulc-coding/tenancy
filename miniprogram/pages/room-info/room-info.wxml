@@ -1,9 +1,29 @@
 <!--miniprogram/pages/room-info/room-info.wxml-->
 
 <view class="container">
-  <view>
-    <image src="{{room.pic[0]}}" class="room-pic"></image>
-  </view>
+  <scroll-view class="page-body">
+    <view class="swiper">
+      <swiper 
+        class="swiper-box" 
+        indicator-dots="{{scroll.indicatorDots}}" 
+        autoplay="{{scroll.autoplay}}" 
+        interval="{{scroll.interval}}" 
+        duration="{{scroll.duration}}" 
+        indicator-color="#fff" 
+        indicator-active-color="red"
+      ><block wx:for-items="{{room.pic}}" wx:key="item.id">
+            <swiper-item>
+              <block wx:if="{{item}}">
+                <image class="pic" src="{{item}}" />
+              </block>
+              <block wx:else>
+                <image class="pic" src="../../images/default_pic.png"/>
+              </block>
+            </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </scroll-view>
   <view class="describe">
     <view class="info">
       <text class="price">{{room.fee+" 元/月"}}</text>

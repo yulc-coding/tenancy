@@ -1,4 +1,9 @@
-/* miniprogram/pages/room-info/room-info.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
 
 .room-pic {
   width: 700rpx;
@@ -29,4 +34,17 @@
 .house-map {
   width: 700rpx;
   height: 400rpx;
+}
+
+scroll-view {
+  height: 555rpx;
+}
+
+.swiper, .swiper-box {
+  height: 100%;
+}
+
+.pic {
+  width: 100%;
+  height: 555rpx;
 }

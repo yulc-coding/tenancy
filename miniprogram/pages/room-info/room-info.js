@@ -9,6 +9,13 @@ Page({
     owner: {
       name: '',
       phone: ''
+    },
+    scroll: {
+      open: false,
+      indicatorDots: true, //是否显示面板指示点
+      autoplay: false, //是否开启自动切换
+      interval: 3000, //自动切换时间间隔
+      duration: 500 //滑动动画时长
     }
   },
 
