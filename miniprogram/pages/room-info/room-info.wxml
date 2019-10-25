@@ -1,53 +1,48 @@
 <!--miniprogram/pages/room-info/room-info.wxml-->
 
-<view class="container">
-  <scroll-view class="page-body">
-    <view class="swiper">
-      <swiper 
-        class="swiper-box" 
-        indicator-dots="{{scroll.indicatorDots}}" 
-        autoplay="{{scroll.autoplay}}" 
-        interval="{{scroll.interval}}" 
-        duration="{{scroll.duration}}" 
-        indicator-color="#fff" 
-        indicator-active-color="red"
-      ><block wx:for-items="{{room.pic}}" wx:key="item.id">
-            <swiper-item>
-              <block wx:if="{{item}}">
-                <image class="pic" src="{{item}}" />
-              </block>
-              <block wx:else>
-                <image class="pic" src="../../images/default_pic.png"/>
-              </block>
-            </swiper-item>
-        </block>
-      </swiper>
-    </view>
-  </scroll-view>
-  <view class="describe">
-    <view class="info">
-      <text class="price">{{room.fee+" 元/月"}}</text>
-      <text class="price">{{room.deposit}}</text>
-    </view>
-    <view class="info">
-      <text class="price">{{"水费: "+room.water+" 元/吨"}}</text>
-      <text class="price">{{"电费: "+room.electricity +" 元/度"}}</text>
-    </view>
-    <view class="info">
-      <text>{{room.square+"m² — "+room.community+" — "+room.houseNu+"号"}}</text>
-    </view>
-    <view class="info">
-      <text class="provide" wx:if="{{room.provide[0]}}">空调</text>
-      <text class="provide" wx:if="{{room.provide[1]}}">热水器</text>
-      <text class="provide" wx:if="{{room.provide[2]}}">冰箱</text>
-      <text class="provide" wx:if="{{room.provide[3]}}">洗衣机</text>
-    </view>
-    <view class="info">
-      <button></button>
-      <text>{{"联系人："+ owner.name+" ("+owner.phone+")"}}</text>
+<swiper class="screen-swiper square-dot" 
+  indicator-dots="{{swiper.indicatorDots}}"
+  circular="{{swiper.circular}}"
+  autoplay="{{swiper.autoplay}}"
+  interval="{{swiper.interval}}"
+  duration="{{swiper.duration}}"
+  indicator-color="#fff" 
+  indicator-active-color="green"
+><swiper-item wx:for="{{room.pic}}" wx:key>
+    <image src="{{item}}" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+
+<view class="padding bg-white" wx:if="{{room.fee}}">
+  <view class="solid-bottom text-df padding">
+    {{room.square+"m² — "+room.community+" — "+room.houseNu+"号"}}
+  </view>
+  <view class="solid-bottom text-df padding">
+    {{room.fee+" 元/月， "+room.deposit}}
+  </view>
+  <view class="solid-bottom text-df padding">
+    {{"水费: "+room.water+" 元/吨， 电费: "+room.electricity +" 元/度"}}
+  </view>
+  <view class="padding bg-white solid-bottom">
+    <view class="cu-tag bg-cyan round" wx:if="{{room.provide[0]}}">空调</view>
+    <view class="cu-tag bg-orange round" wx:if="{{room.provide[1]}}">热水器</view>
+    <view class="cu-tag bg-blue round" wx:if="{{room.provide[2]}}">冰箱</view>
+    <view class="cu-tag bg-purple round" wx:if="{{room.provide[3]}}">洗衣机</view>
+  </view>
+  <view class="cu-list menu">
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-people text-orange"></text>
+        <text class="text-grey">联系人：</text>
+        <text class="solid-bottom text-sm padding" wx:if="{{owner.name}}">{{owner.name+" ("+owner.phone+")"}}</text>
+      </view>
+      <view class="action">
+        <button class="cu-btn round bg-green shadow" bindtap="getOwner">获取</button>
+      </view>
     </view>
   </view>
-  <view class="info">
-    <map class="house-map"></map>
-  </view>
+</view>
+
+<view>
+  <map class="location"></map>
 </view>

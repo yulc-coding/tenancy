@@ -1,10 +1,22 @@
-<view wx:for="{{roomList}}" style="margin-top:10px">
+<view wx:for="{{roomList}}">
   <navigator class="room" url="../room-info/room-info?roomId={{item._id}}">
-    <image src="{{item.pic[0]}}" class="room-image"></image>
-    <view class="describe">
-      <view>{{item.describe}}</view>
-      <view>{{item.square+"m²—"+item.community+"—"+item.houseNu+"号"}}</view>
-      <view class="fee">{{item.fee+"元/月"}}</view>
+    <view class="cu-card article ">
+      <view class="cu-item shadow">
+        <view class="content" style="padding: 30rpx 30rpx 0 30rpx">
+          <image src="{{item.pic[0]}}" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content">
+              {{item.community+"—"+item.houseNu+"号"}}
+              <text>\n</text> 
+              {{item.describe}}
+            </view>
+            <view>
+              <view class="cu-tag bg-green light round">{{item.square+"m²"}}</view>
+              <view class="cu-tag bg-red light round">{{item.fee+"元/月"}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </navigator>
 </view>
