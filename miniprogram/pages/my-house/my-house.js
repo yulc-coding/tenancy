@@ -1,66 +1,70 @@
-// miniprogram/pages/my-house/my-house.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    ownerNormal: false,
+    ownerEdit: true,
+    ownerDisabled: true,
+    nickName: '',
+    phone: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    this.setData({
+      nickName: app.globalData.nickName,
+      phone: app.globalData.phone
+    })
 
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 编辑户主信息
    */
-  onReady: function () {
-
+  ownerEdit: function() {
+    this.setData({
+      ownerNormal: true,
+      ownerEdit: false,
+      ownerDisabled: false
+    })
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 提交户主信息
    */
-  onShow: function () {
-
+  ownerSubmit: function(e) {
+    this.afterOwnerEdit()
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 取消户主信息编辑
+   * 不可编辑，回退编辑内容
    */
-  onHide: function () {
-
+  ownerCancel: function() {
+    this.afterOwnerEdit()
+    this.setData({
+      nickName: app.globalData.nickName,
+      phone: app.globalData.phone
+    })
   },
 
   /**
-   * 生命周期函数--监听页面卸载
+   * 编辑之后
+   * 设置不可编辑
+   * 按钮显示调整
    */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  afterOwnerEdit: function() {
+    this.setData({
+      ownerNormal: false,
+      ownerEdit: true,
+      ownerDisabled: true
+    })
   }
+
 })
