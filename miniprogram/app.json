@@ -1,10 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/db/db",
-    "pages/room/room",
-    "pages/fee-house/fee-house",
-    "pages/my-house/my-house",
+    "pages/my-room/my-room",
+    "pages/room-edit/room-edit",
     "pages/room-info/room-info",
     "pages/test/test"
   ],
@@ -24,7 +22,7 @@
         "selectedIconPath": "images/basics_cur.png"
       },
       {
-        "pagePath": "pages/my-house/my-house",
+        "pagePath": "pages/room-edit/room-edit",
         "text": "发布",
         "iconPath": "images/about.png",
         "selectedIconPath": "images/about_cur.png"

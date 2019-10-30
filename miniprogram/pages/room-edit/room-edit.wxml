@@ -1,0 +1,90 @@
+<form bindsubmit="formSubmit">
+  <view class="cu-form-group margin-top">
+    <view class="title">小区：</view>
+    <input placeholder="小区名称" name="community" value="{{room.community}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">楼号：</view>
+    <input placeholder="第几幢" name="houseNu" value="{{room.houseNu}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">房间：</view>
+    <input placeholder="房间号" type="number" name="roomNu" value="{{room.roomNu}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">大小（㎡）：</view>
+    <input type="digit" name="square" value="{{room.square}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">房租（元/月）：</view>
+    <input type="digit" name="fee" value="{{room.fee}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">水费（元/吨）：</view>
+    <input type="digit" name="water" value="{{room.water}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">电费（元/度）：</view>
+    <input type="digit" name="electricity" value="{{room.electricity}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">押金方式：</view>
+    <input name="deposit" value="{{room.deposit}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">是否空闲：</view>
+    <switch class="orange radius sm" name="free" checked></switch>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="action">设施：</view>
+  </view>
+  <view class="cu-form-group">
+    <checkbox-group bindchange="checkboxChange">
+      <checkbox id="kt" value="0" checked="{{room.provide[0]}}" name="provide"></checkbox>
+      <label for="kt" class="ck-label">空调</label>
+
+      <checkbox id="rsq" value="1" checked="{{room.provide[1]}}" name="provide"></checkbox>
+      <label for="rsq" class="ck-label">热水器</label>
+
+      <checkbox id="bx" value="2" checked="{{room.provide[2]}}" name="provide"></checkbox>
+      <label for="bx" class="ck-label">冰箱</label>
+
+      <checkbox id="xyj" value="3" checked="{{room.provide[3]}}" name="provide"></checkbox>
+      <label for="xyj" class="ck-label">洗衣机</label>
+    </checkbox-group>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="action">介绍</view>
+  </view>
+  <view class="cu-form-group align-start">
+    <textarea maxlength="-1" name="describe" value="{{room.describe}}"></textarea>
+  </view>
+
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      图片上传
+    </view>
+    <view class="action">
+      {{imgList.length}}/6
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<6}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+
+  <button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
+    <text class="cuIcon-loading2 iconfont-spin"></text> 提交
+  </button>
+</form>

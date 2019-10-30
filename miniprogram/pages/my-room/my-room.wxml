@@ -1,0 +1,63 @@
+<view>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange"></text>户主信息：
+    </view>
+    <view class="action">
+      <text class="cuIcon-edit text-orange" id="owner_edit" hidden="{{ownerNormal}}" bindtap="ownerEdit"></text>
+      <text class="cuIcon-roundcheck text-green" hidden="{{ownerEdit}}" id="owner_submit" bindtap="ownerSubmit"></text>
+      <text class="cuIcon-roundclose text-grey" hidden="{{ownerEdit}}" id="owner_cancel" bindtap="ownerCancel"></text>
+    </view>
+  </view>
+  <view class="cu-list menu">
+    <view class="cu-item">
+      <view class="cu-form-group">
+        <view class="title">户主：</view>
+        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.name}}"></input>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cu-form-group">
+        <view class="title">电话：</view>
+        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.phone}}"></input>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange"></text>房源信息：
+    </view>
+    <navigator class="action" url="../room-edit/room-edit">
+      <text class="cuIcon-add text-green" hidden="{{!ownerRegister}}" bindtap="newRoom"></text>
+    </navigator>
+  </view>
+</view>
+
+<view wx:for="{{roomList}}" wx:key>
+  <navigator url="../room-edit/room-edit?roomId={{item._id}}">
+    <view class="cu-card article ">
+      <view class="cu-item shadow">
+        <view class="content" style="padding: 30rpx 30rpx 0 30rpx">
+          <image src="{{item.pic[0]}}" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content">
+              {{item.community+" — "+item.houseNu+"号 — "+ item.roomNu}}
+              <text>\n</text> {{item.describe}}
+            </view>
+            <view>
+              <view class="cu-tag bg-green light round">{{item.square+"m²"}}</view>
+              <view class="cu-tag bg-red light round">{{item.fee+"元/月"}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<view class="solid-bottom text-xl text-center padding" hidden="{{ownerRegister}}">
+  <text class="text-bold text-red">请先补全户主信息！</text>
+</view>

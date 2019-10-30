@@ -18,7 +18,6 @@ App({
         name: 'login',
         data: {},
         success: res => {
-          console.log(res)
           this.globalData.openid = res.result.openid
         },
         fail: err => {

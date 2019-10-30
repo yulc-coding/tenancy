@@ -1,4 +1,4 @@
-<view wx:for="{{roomList}}">
+<view wx:for="{{roomList}}" wx:key>
   <navigator class="room" url="../room-info/room-info?roomId={{item._id}}">
     <view class="cu-card article ">
       <view class="cu-item shadow">
@@ -6,7 +6,7 @@
           <image src="{{item.pic[0]}}" mode="aspectFill"></image>
           <view class="desc">
             <view class="text-content">
-              {{item.community+"—"+item.houseNu+"号"}}
+              {{item.community+" — "+item.houseNu+"号 — "+ item.roomNu}}
               <text>\n</text> 
               {{item.describe}}
             </view>

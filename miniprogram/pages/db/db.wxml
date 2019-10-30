@@ -1,5 +1,0 @@
-<!--miniprogram/pages/db/db.wxml-->
-
-<view>
-  <button class="uploader-text" bindtap="onDbTest">链接数据库</button>
-</view>
