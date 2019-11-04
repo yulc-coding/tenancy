@@ -8,7 +8,10 @@ Page({
       provide: []
     },
     imgList: [],
-    provideArr: [false, false, false, false]
+    provideArr: [false, false, false, false],
+    modalShow: '',
+    modalContent: '',
+    comeBack: true
   },
 
   /**
@@ -84,6 +87,7 @@ Page({
    */
   formSubmit: function(e) {
     let submitRoom = e.detail.value
+    // 赋值提供的设施
     submitRoom.provide = this.data.provideArr
     this.newRoom(submitRoom)
   },
@@ -114,7 +118,7 @@ Page({
           // 全部上传完毕，提交表单
           if (successNu === picNu) {
             room.pic = picIds
-            console.log(room)
+            this.submitRoom(room)
           }
         },
         fail: e => {
@@ -129,16 +133,40 @@ Page({
    * 提交房源
    */
   submitRoom: function(room) {
-
+    console.log(room)
     const db = wx.cloud.database()
-    db.collection('room').doc(roomId).get()
+    db.collection('room').add({
+        data: room
+      })
       .then(res => {
+        wx.hideLoading()
         this.setData({
-          room: res.data
+          modalContent: '提交成功',
+          modalShow: 'show',
+          comeBack: true
         })
       })
-      .then(res => wx.hideLoading())
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err)
+        wx.hideLoading()
+        this.setData({
+          modalContent: '提交失败',
+          modalShow: 'show',
+          comeBack: false
+        })
+      })
+  },
+
+  hideModal: function() {
+    this.setData({
+      modalContent: '',
+      modalShow: ''
+    })
+    if (comeBack) {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   }
 
 })

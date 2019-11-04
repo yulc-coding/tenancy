@@ -84,7 +84,16 @@
     </view>
   </view>
 
-  <button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
-    <text class="cuIcon-loading2 iconfont-spin"></text> 提交
-  </button>
+  <button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">提交</button>
 </form>
+
+<view class="cu-modal {{modalShow}}">
+  <view class="cu-dialog">
+    <view class="padding-xl">
+      {{modalContent}}
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">我知道了</view>
+    </view>
+  </view>
+</view>

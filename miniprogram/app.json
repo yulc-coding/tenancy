@@ -22,7 +22,7 @@
         "selectedIconPath": "images/basics_cur.png"
       },
       {
-        "pagePath": "pages/room-edit/room-edit",
+        "pagePath": "pages/my-room/my-room",
         "text": "发布",
         "iconPath": "images/about.png",
         "selectedIconPath": "images/about_cur.png"
