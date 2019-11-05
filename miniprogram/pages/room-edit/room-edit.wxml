@@ -74,7 +74,7 @@
     <view class="grid col-4 grid-square flex-sub">
       <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
         <image src='{{imgList[index]}}' mode='aspectFill'></image>
-        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}" data-url="{{imgList[index]}}">
           <text class="cuIcon-close"></text>
         </view>
       </view>
