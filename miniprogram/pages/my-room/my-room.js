@@ -38,21 +38,36 @@ Page({
           })
           console.log('已注册，正在获取已发布信息')
           // 已注册的显示发布的信息
-          const db = wx.cloud.database()
-          db.collection('room')
-            .where({
-              _openid: app.globalData.openid
-            })
-            .get()
-            .then(res => {
-              this.setData({
-                roomList: res.data
-              })
-            })
-            .catch(err => console.error(err))
+          this.getRoomList()
         }
       })
       .catch(err => console.error(err))
+  },
+
+  /**
+   * 获取发布的列表
+   */
+  getRoomList: function() {
+    const db = wx.cloud.database()
+    db.collection('room')
+      .where({
+        _openid: app.globalData.openid
+      })
+      .get()
+      .then(res => {
+        this.setData({
+          roomList: res.data
+        })
+      })
+      .catch(err => console.error(err))
+  },
+
+  onShow: function() {
+    if (app.globalData.reloadMyRoom) {
+      this.getRoomList()
+      // 设为不刷新页面
+      app.globalData.reloadMyRoom = false
+    }
   },
 
   /**

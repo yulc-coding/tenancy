@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
 
   /**
@@ -268,6 +270,7 @@ Page({
       })
       .then(res => {
         wx.hideLoading()
+        this.reloadBackRoom()
         this.setData({
           modalContent: '提交成功',
           modalShow: 'show',
@@ -292,6 +295,7 @@ Page({
       // data 传入需要局部更新的数据
       data: room,
       success: res => {
+        this.reloadBackRoom()
         this.setData({
           modalContent: '提交成功',
           modalShow: 'show',
@@ -309,6 +313,13 @@ Page({
         wx.hideLoading()
       }
     })
+  },
+
+  /**
+   * 修改信息返回前一个页面时，刷新列表信息
+   */
+  reloadBackRoom: function() {
+    app.globalData.reloadMyRoom = true
   },
 
 
