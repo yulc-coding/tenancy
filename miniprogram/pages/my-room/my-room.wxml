@@ -13,13 +13,13 @@
     <view class="cu-item">
       <view class="cu-form-group">
         <view class="title">户主：</view>
-        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.name}}"></input>
+        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.name}}" bindinput="nameInput"></input>
       </view>
     </view>
     <view class="cu-item">
       <view class="cu-form-group">
         <view class="title">电话：</view>
-        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.phone}}"></input>
+        <input placeholder="" disabled="{{ownerDisabled}}" value="{{owner.phone}}" bindinput="phoneInput"></input>
       </view>
     </view>
   </view>

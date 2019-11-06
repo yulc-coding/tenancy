@@ -192,9 +192,6 @@ Page({
         // 只是更新pic字段，其他不更新
         pic: this.data.imgList
       },
-      success: res => {
-        console.log(this.data.imgList)
-      },
       fail: err => {
         this.setData({
           modalContent: '失败',
@@ -215,12 +212,15 @@ Page({
    * 修改
    */
   formSubmit: function(e) {
-    let submitRoom = e.detail.value
+    let room = e.detail.value
     // 赋值提供的设施
-    submitRoom.provide = this.data.provideArr
-    this.newRoom(submitRoom)
+    room.provide = this.data.provideArr
+    if (this.data.roomId) {
+      this.updateRoom(room)
+    } else {
+      this.newRoom(room)
+    }
   },
-
 
   /**
    * 新增房源
@@ -275,7 +275,6 @@ Page({
         })
       })
       .catch(err => {
-        console.error(err)
         wx.hideLoading()
         this.setData({
           modalContent: '提交失败',
@@ -284,10 +283,32 @@ Page({
         })
       })
   },
-
-
-  editRoom: function(room) {
-
+  /**
+   * 更新房源
+   */
+  updateRoom: function(room) {
+    const db = wx.cloud.database()
+    db.collection('room').doc(this.data.roomId).update({
+      // data 传入需要局部更新的数据
+      data: room,
+      success: res => {
+        this.setData({
+          modalContent: '提交成功',
+          modalShow: 'show',
+          comeBack: true
+        })
+      },
+      fail: err => {
+        this.setData({
+          modalContent: '提交失败',
+          modalShow: 'show',
+          comeBack: false
+        })
+      },
+      complete: () => {
+        wx.hideLoading()
+      }
+    })
   },
 
 
@@ -296,7 +317,7 @@ Page({
       modalContent: '',
       modalShow: ''
     })
-    if (comeBack) {
+    if (this.data.comeBack) {
       wx.navigateBack({
         delta: 1
       })

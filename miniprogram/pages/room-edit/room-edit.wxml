@@ -5,7 +5,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">楼号：</view>
-    <input placeholder="第几幢" name="houseNu" value="{{room.houseNu}}"></input>
+    <input placeholder="第几幢" type="number" name="houseNu" value="{{room.houseNu}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">房间：</view>

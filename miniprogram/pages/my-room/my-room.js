@@ -14,7 +14,9 @@ Page({
       name: '',
       phone: ''
     },
-    roomList: []
+    roomList: [],
+    editName: '',
+    editPhone: ''
   },
 
   /**
@@ -64,11 +66,50 @@ Page({
     })
   },
 
+  nameInput: function(e) {
+    this.setData({
+      editName: e.detail.value
+    })
+  },
+  phoneInput: function(e) {
+    this.setData({
+      editPhone: e.detail.value
+    })
+  },
+
   /**
    * 提交户主信息
+   * 更新数据库
    */
   ownerSubmit: function(e) {
-    this.afterOwnerEdit()
+    const db = wx.cloud.database()
+    db.collection('user').add({
+        data: {
+          name: this.data.editName,
+          phone: this.data.editPhone
+        }
+      })
+      .then(res => {
+        this.setData({
+          ownerNormal: false,
+          ownerEdit: true,
+          ownerDisabled: true,
+          ownerRegister: true
+        })
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 1000
+        })
+      })
+      .catch(err => {
+        console.error(err)
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none',
+          duration: 2000
+        })
+      })
   },
 
   /**
@@ -77,24 +118,12 @@ Page({
    * 回退编辑内容
    */
   ownerCancel: function() {
-    this.afterOwnerEdit()
     this.setData({
-      owner: this.data.owner
-    })
-  },
-
-  /**
-   * 编辑之后
-   * 设置不可编辑
-   * 按钮显示调整
-   */
-  afterOwnerEdit: function() {
-    this.setData({
+      owner: this.data.owner,
       ownerNormal: false,
       ownerEdit: true,
       ownerDisabled: true
     })
   },
-
 
 })
