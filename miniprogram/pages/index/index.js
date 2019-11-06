@@ -34,31 +34,33 @@ Page({
    * 加载更多数据
    */
   onReachBottom: function() {
-
+    var that = this
     wx.showLoading({
       title: '玩命加载中'
     })
     const db = wx.cloud.database()
     // 获取总条数
     db.collection('room').where({
-      free: true
-    }).count({
-      success: function(res) {
+        free: true
+      }).count()
+      .then(res => {
         const total = res.total
         // 总页数
-        const pages = total % this.data.pageSize == 0 ? Math.floor(total % this.data.pageSize) : Math.ceil(total / this.data.pageSize)
-        if (this.page < pages) {
+        const pages = Math.ceil(total / this.data.pageSize)
+        // 当前不是最后一页时加载数据
+        if (this.data.page < pages) {
           db.collection('room')
             .where({
               free: true
             })
-            .skip(this.page * this.pageSize)
+            .skip(this.data.page * this.data.pageSize)
             .limit(this.data.pageSize)
             .get({
               success: (res => {
-                this.setData({
-                  roomList: this.data.roomList.concat(res.data),
-                  page: this.page + 1 // 当前页+1
+                console.log(res.data)
+                that.setData({
+                  roomList: that.data.roomList.concat(res.data),
+                  page: that.data.page + 1 // 当前页+1
                 })
               }),
               fail: (err => {
@@ -66,12 +68,14 @@ Page({
               }),
               complete: () => {
                 wx.hideLoading()
-                console.log(this.data.page)
               }
             })
+        } else {
+          wx.hideLoading()
+          console.log("there is no item")
         }
-      }
-    })
+
+      })
   },
 
 

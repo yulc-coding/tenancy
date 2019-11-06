@@ -234,6 +234,10 @@ Page({
     let picIds = []
     // 图片数量
     let picNu = this.data.imgList.length
+    if (picNu == 0) {
+      room.pic = picIds
+      this.submitRoom(room)
+    }
     // 上传成功的数量
     let successNu = 0
     this.data.imgList.forEach((item, index) => {
