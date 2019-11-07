@@ -20,7 +20,7 @@
   </navigator>
 </view>
 <view class="padding bg-white">
-  <view class="cu-progress round sm margin-top-sm striped active">
+  <view class="cu-progress round sm margin-top-sm striped">
     <view class="bg-black" style="width:{{loading}}%;"></view>
   </view>
 </view>
