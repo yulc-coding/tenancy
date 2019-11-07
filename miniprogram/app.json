@@ -3,8 +3,7 @@
     "pages/index/index",
     "pages/my-room/my-room",
     "pages/room-edit/room-edit",
-    "pages/room-info/room-info",
-    "pages/test/test"
+    "pages/room-info/room-info"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
