@@ -7,8 +7,7 @@
           <view class="desc">
             <view class="text-content">
               {{item.community+" — "+item.houseNu+"号 — "+ item.roomNu}}
-              <text>\n</text> 
-              {{item.describe}}
+              <text>\n</text> {{item.describe}}
             </view>
             <view>
               <view class="cu-tag bg-green light round">{{item.square+"m²"}}</view>
@@ -19,4 +18,21 @@
       </view>
     </view>
   </navigator>
+</view>
+<view class="padding bg-white">
+  <view class="cu-progress round sm margin-top-sm striped active">
+    <view class="bg-black" style="width:{{loading}}%;"></view>
+  </view>
+</view>
+
+<view class="flex-sub text-center" wx:if="{{!noMoreList}}">
+  <view class="solid-bottom text-xl padding">
+    <text class="text-grey">下拉获取更多</text>
+  </view>
+</view>
+
+<view class="flex-sub text-center" wx:if="{{noMoreList}}">
+  <view class="solid-bottom text-xl padding">
+    <text class="text-grey">我是有底线的</text>
+  </view>
 </view>
